@@ -527,6 +527,7 @@ module.exports = function(webpackEnv) {
       ],
     },
     plugins: [
+      isEnvDevelopment && new CorberWebpackPlugin(),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
