@@ -39,6 +39,9 @@ const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
 const postcssNormalize = require('postcss-normalize');
 // CorberWebpackPlugin for corber hot-reloading
 const CorberWebpackPlugin = require('corber-webpack-plugin');
+// Included to manually append corber assets
+const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
+
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
@@ -528,7 +531,6 @@ module.exports = function(webpackEnv) {
       ],
     },
     plugins: [
-      isEnvDevelopment && new CorberWebpackPlugin(),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
@@ -661,6 +663,13 @@ module.exports = function(webpackEnv) {
           silent: true,
           // The formatter is invoked directly in WebpackDevServerUtils during development
           formatter: isEnvProduction ? typescriptFormatter : undefined,
+        }),
+      // isEnvDevelopment && new CorberWebpackPlugin(),
+      isEnvDevelopment &&
+        new HtmlWebpackTagsPlugin({
+          tags: ['cordova.js', 'cordova_plugins.js'],
+          append: false,
+          publicPath: false,
         }),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
