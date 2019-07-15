@@ -37,8 +37,6 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
 // @remove-on-eject-end
 const postcssNormalize = require('postcss-normalize');
-// CorberWebpackPlugin for corber hot-reloading
-const CorberWebpackPlugin = require('corber-webpack-plugin');
 // Included to manually append corber assets
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 
@@ -664,7 +662,6 @@ module.exports = function(webpackEnv) {
           // The formatter is invoked directly in WebpackDevServerUtils during development
           formatter: isEnvProduction ? typescriptFormatter : undefined,
         }),
-      // isEnvDevelopment && new CorberWebpackPlugin(),
       isEnvDevelopment &&
         new HtmlWebpackTagsPlugin({
           tags: ['cordova.js', 'cordova_plugins.js'],

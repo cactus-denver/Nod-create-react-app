@@ -1,3 +1,6 @@
+// https://github.com/isleofcode/vue-cli-plugin-corber
+// Function concepts in this file borrowed from isleofcode work above.
+
 // This file was written by Acorn developers
 // specifically for Nod-Frontent
 
