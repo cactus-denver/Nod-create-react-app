@@ -34,6 +34,7 @@ installedPlugins.forEach(plugin => {
 //Intercept Requests - return with our cache if Cordova assets
 //eslint-disable-next-line no-unused-vars
 function injectCordovaJS() {}
+
 injectCordovaJS = function(req, res, next) {
   return (req, res, next) => {
     if (req.url === '/cordova.js') {
