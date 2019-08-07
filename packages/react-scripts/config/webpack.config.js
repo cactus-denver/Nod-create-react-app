@@ -353,6 +353,18 @@ module.exports = function(webpackEnv) {
                 name: 'static/media/[name].[hash:8].[ext]',
               },
             },
+            //We added this to allow inline svg files
+            // {
+            //   test: /\.svg$/,
+            //   loader: require.resolve('svg-url-loader'),
+            //   options: {
+            //     // Images larger than 10 KB won’t be inlined
+            //     limit: imageInlineSizeLimit, //10 * 1024,
+            //     // Remove quotes around the encoded URL –
+            //     // they’re rarely useful
+            //     noquotes: true,
+            //   }
+            // },
             // Process application JS with Babel.
             // The preset includes JSX, Flow, TypeScript, and some ESnext features.
             {
