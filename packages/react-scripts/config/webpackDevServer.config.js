@@ -7,7 +7,7 @@
  */
 // @remove-on-eject-end
 'use strict';
-
+const injectCordovaJS = require('./cordovaConfig.js');
 const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware');
 const evalSourceMapMiddleware = require('react-dev-utils/evalSourceMapMiddleware');
 const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware');
@@ -107,6 +107,7 @@ module.exports = function(proxy, allowedHost) {
       // it used the same host and port.
       // https://github.com/facebook/create-react-app/issues/2272#issuecomment-302832432
       app.use(noopServiceWorkerMiddleware());
+      app.use(injectCordovaJS());
     },
   };
 };
